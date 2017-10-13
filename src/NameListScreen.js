@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ListView} from 'react-native';
+import {View, ListView, BackHandler} from 'react-native';
 import  firebaseApp  from './FireBaseApp';
 const ListName = require('./ListName');
 const styles = require('../styles.js');
@@ -47,6 +47,12 @@ export default class NameListScreen extends React.Component {
 
     componentDidMount() {
         this.listenForNames(this.NamesRef);
+        BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+    }
+
+    componentWillUnmount(){
+        this.NamesRef.off();
+        BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
     }
 
     render() {
@@ -56,7 +62,7 @@ export default class NameListScreen extends React.Component {
                     dataSource={this.state.dataSource}
                     renderRow={this.renderName.bind(this)}
                     enableEmptySections={true}
-                    style={styles.nameview}
+                    style={styles.namelistview}
                 />
 
             </View>
@@ -69,8 +75,8 @@ export default class NameListScreen extends React.Component {
         );
     }
 
-    componentWillUnmount(){
-        this.NamesRef.off();
+    onBackPress = () => {
+        const {goBack} = this.props.navigation;
+        return goBack();
     }
-
 }

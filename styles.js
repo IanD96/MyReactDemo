@@ -4,7 +4,8 @@ const {StyleSheet} = React
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#BBFFB6',
     },
@@ -16,11 +17,12 @@ const styles = StyleSheet.create({
     name: {
         textAlign: 'center',
         color: '#FF5500',
-        fontSize: 19,
-        paddingTop: 40,
-        paddingBottom: 40,
+        fontSize: 22,
+        fontWeight: 'bold',
+//        paddingTop: 40,
+//        paddingBottom: 40,
     },
-    nameview: {
+    namelistview: {
         flex: 1,
     },
     nm: {
@@ -28,9 +30,8 @@ const styles = StyleSheet.create({
         borderBottomColor: '#BBFFB6',
         borderColor: 'transparent',
         borderWidth: 1,
-        paddingLeft: 16,
         paddingTop: 14,
-        paddingBottom: 16,
+        paddingBottom: 14,
     },
     nText: {
         color: '#333',

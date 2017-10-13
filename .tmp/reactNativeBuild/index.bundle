@@ -58123,7 +58123,16 @@ var MainScreen = _wrapComponent('MainScreen')((_temp = _class = function (_React
                             lineNumber: 50
                         }
                     },
-                    'To generate a name click the button below.'
+                    'Click the Generate Name button to get a new name.'
+                ),
+                _react3.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.name, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 54
+                        }
+                    },
+                    this.state.textValue
                 ),
                 _react3.default.createElement(_reactNative.Button, {
                     color: '#A42EFB',
@@ -58131,23 +58140,15 @@ var MainScreen = _wrapComponent('MainScreen')((_temp = _class = function (_React
                     onPress: this.addName,
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 54
+                        lineNumber: 58
                     }
                 }),
-                _react3.default.createElement(
-                    _reactNative.Text,
-                    { style: styles.name, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 60
-                        }
-                    },
-                    this.state.textValue
-                ),
                 _react3.default.createElement(_reactNative.Button, {
                     title: 'Name List',
                     onPress: function onPress() {
                         return navigate('List');
                     },
+
                     __source: {
                         fileName: _jsxFileName,
                         lineNumber: 64
@@ -78126,7 +78127,8 @@ var StyleSheet = React.StyleSheet;
 var styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#BBFFB6'
     },
@@ -78138,11 +78140,10 @@ var styles = StyleSheet.create({
     name: {
         textAlign: 'center',
         color: '#FF5500',
-        fontSize: 19,
-        paddingTop: 40,
-        paddingBottom: 40
+        fontSize: 22,
+        fontWeight: 'bold'
     },
-    nameview: {
+    namelistview: {
         flex: 1
     },
     nm: {
@@ -78150,9 +78151,8 @@ var styles = StyleSheet.create({
         borderBottomColor: '#BBFFB6',
         borderColor: 'transparent',
         borderWidth: 1,
-        paddingLeft: 16,
         paddingTop: 14,
-        paddingBottom: 16
+        paddingBottom: 14
     },
     nText: {
         color: '#333',
@@ -78225,6 +78225,12 @@ var NameListScreen = _wrapComponent('NameListScreen')((_temp = _class = function
 
         var _this = _possibleConstructorReturn(this, (NameListScreen.__proto__ || Object.getPrototypeOf(NameListScreen)).call(this, props));
 
+        _this.onBackPress = function () {
+            var goBack = _this.props.navigation.goBack;
+
+            return goBack();
+        };
+
         console.ignoredYellowBox = ['Setting a timer'];
         _this.state = {
             dataSource: new _reactNative.ListView.DataSource({
@@ -78265,6 +78271,13 @@ var NameListScreen = _wrapComponent('NameListScreen')((_temp = _class = function
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.listenForNames(this.NamesRef);
+            _reactNative.BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            this.NamesRef.off();
+            _reactNative.BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
         }
     }, {
         key: 'render',
@@ -78273,17 +78286,17 @@ var NameListScreen = _wrapComponent('NameListScreen')((_temp = _class = function
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 54
+                        lineNumber: 60
                     }
                 },
                 _react3.default.createElement(_reactNative.ListView, {
                     dataSource: this.state.dataSource,
                     renderRow: this.renderName.bind(this),
                     enableEmptySections: true,
-                    style: styles.nameview,
+                    style: styles.namelistview,
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 55
+                        lineNumber: 61
                     }
                 })
             );
@@ -78293,14 +78306,9 @@ var NameListScreen = _wrapComponent('NameListScreen')((_temp = _class = function
         value: function renderName(name) {
             return _react3.default.createElement(ListName, { name: name, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 68
+                    lineNumber: 74
                 }
             });
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.NamesRef.off();
         }
     }]);
 

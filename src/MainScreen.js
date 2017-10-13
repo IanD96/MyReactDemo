@@ -48,7 +48,11 @@ export default class MainScreen extends React.Component {
             <View style={styles.container}>
 
                 <Text style={styles.instructions}>
-                    To generate a name click the button below.
+                    Click the Generate Name button to get a new name.
+                </Text>
+
+                <Text style={styles.name}>
+                    {this.state.textValue}
                 </Text>
 
                 <Button
@@ -57,13 +61,10 @@ export default class MainScreen extends React.Component {
                     onPress={this.addName}
                 />
 
-                <Text style={styles.name}>
-                    {this.state.textValue}
-                </Text>
-
                 <Button
                     title="Name List"
                     onPress={() => navigate('List')}
+
                 />
             </View>
         );
