@@ -13,12 +13,29 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 20,
     },
-    names: {
+    name: {
         textAlign: 'center',
         color: '#FF5500',
         fontSize: 19,
         paddingTop: 40,
         paddingBottom: 40,
+    },
+    nameview: {
+        flex: 1,
+    },
+    nm: {
+        backgroundColor: '#BBFFB6',
+        borderBottomColor: '#BBFFB6',
+        borderColor: 'transparent',
+        borderWidth: 1,
+        paddingLeft: 16,
+        paddingTop: 14,
+        paddingBottom: 16,
+    },
+    nText: {
+        color: '#333',
+        textAlign: 'center',
+        fontSize: 16,
     },
 });
 
