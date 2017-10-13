@@ -1,5 +1,4 @@
 import { AppRegistry } from 'react-native';
-//import App from './App';
 import MainScreen from './src/MainScreen.js'
 import NameListScreen from './src/NameListScreen.js'
 import {StackNavigator,} from 'react-navigation';
